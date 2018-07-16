@@ -30,4 +30,8 @@ class User extends Authenticatable
     protected $attributes = [
         'type' => 'backlogger',
     ];
+
+    public function backlogs(){
+        return $this->hasMany('App\Backlog');
+    }
 }
