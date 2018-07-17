@@ -21,6 +21,10 @@ class BacklogController extends Controller
     public function index()
     {
         //
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        return $user->backlogs();
     }
 
     /**
