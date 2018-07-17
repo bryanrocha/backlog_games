@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class BacklogController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +42,16 @@ class BacklogController extends Controller
     public function store(Request $request)
     {
         //
+        $backlog = new Backlog;
+
+        $backlog->user_id = auth()->user()->id;
+        $backlog->game_id = $request->input('game_id');
+        $backlog->status = $request->input('status');
+        $backlog->start_date = $request->input('start_date');
+        $backlog->last_update = $request->input('last_update');
+        $backlog->finish_date = $request->input('finish_date');
+
+        $backlog->save();
     }
 
     /**
