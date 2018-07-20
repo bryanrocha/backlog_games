@@ -6,14 +6,14 @@
 	@if(count($backlogs) >= 1)
 		<table class="table table-striped table-sm w-auto">
 			<th>Game</th>
-			<th>Start date</th>
-			<th></th>
+			<th>Start Date</th>
+			<th>Last Update</th>
 			<th></th>
 			@foreach($backlogs as $backlog)
 				<tr>
 					<td>{{ $backlog->game->name }}</td>
 					<td>{{ $backlog->start_date }}</td>
-					<td></td>						
+					<td>{{ $backlog->last_update }}</td>						
 					<td></td>
 				</tr>
 			@endforeach
