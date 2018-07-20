@@ -50,4 +50,14 @@ $(document).ready( function(){
 		} );
 	});
 
+	$('#finished').click( function(){
+
+		if( $(this).is(':checked') ){
+			console.log('checked');
+		}
+		else{
+			console.log('not checked');
+		}
+	} );
+
 } );
