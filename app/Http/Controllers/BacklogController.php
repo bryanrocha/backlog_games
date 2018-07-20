@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Backlog;
+use App\User;
+use App\Console;
+use App\Game;
 use Illuminate\Http\Request;
 
 class BacklogController extends Controller
@@ -24,7 +27,7 @@ class BacklogController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
 
-        return $user->backlogs();
+        return view('backlogs.index')->with('backlogs', $user->backlogs);
     }
 
     /**
@@ -35,6 +38,28 @@ class BacklogController extends Controller
     public function create()
     {
         //
+        $consoles = Console::all()->sortBy('name');
+
+        $cons_array = array();
+
+        foreach($consoles as $console){
+            $cons_array[$console->id] = $console->name;
+        }
+
+        return view('backlogs.create')->with('consoles', $cons_array);
+    }
+
+    public function getGamesByConsole($id)
+    {
+        $games = Game::where('console_id', $id)->get();
+        
+        $games_array = array();
+
+        foreach($games as $game){
+            $games_array[$game->id] = $game->name;
+        }
+
+        return $games_array;
     }
 
     /**
@@ -56,6 +81,8 @@ class BacklogController extends Controller
         $backlog->finish_date = $request->input('finish_date');
 
         $backlog->save();
+
+        return redirect('/backlogs');
     }
 
     /**

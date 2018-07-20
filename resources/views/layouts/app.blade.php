@@ -10,8 +10,11 @@
 
     <title>{{ __('My Gaming Backlog') }}</title>
 
-    <!-- Scripts -->
+    <!-- Scripts -->    
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- <script src="{{ asset('js/funcoes.js') }}" ></script> -->
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -87,6 +90,20 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('Backlog') }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/backlogs/create">
+                                        {{ __('New') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="/backlogs">{{ __('List Games') }}</a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
                                 
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -118,4 +135,5 @@
         </main>
     </div>
 </body>
+
 </html>

@@ -23,4 +23,8 @@ Route::resource('companies', 'CompanyController');
 
 Route::resource('consoles', 'ConsoleController');
 
+Route::resource('backlogs', 'BacklogController');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/gameconsole/{id}', 'BacklogController@getGamesByConsole');
