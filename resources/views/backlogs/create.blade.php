@@ -26,6 +26,11 @@
 		</div>
 
 		<div class="form-group">
+			{{Form::label('','Finished?')}}
+			{{Form::checkbox('finished','yes', false,['class' => 'form-control', 'id' => 'finished'])}}			
+		</div>
+
+		<div class="form-group">
 			{{Form::label('', 'Status')}}
 			{{Form::textarea('status', '', ['class' => 'form-control', 'placeholder' => 'Gameplay status here'])}}
 		</div>
