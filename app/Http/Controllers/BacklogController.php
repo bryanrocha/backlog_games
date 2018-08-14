@@ -59,7 +59,8 @@ class BacklogController extends Controller
             $games_array[$game->id] = $game->name;
         }
 
-        return $games_array;
+        // return response($games_array, Response::HTTP_OK);
+        return response($games_array);
     }
 
     /**

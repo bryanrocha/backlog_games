@@ -17,7 +17,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('game-show', require('./components/Game.vue'));
 
 const app = new Vue({
     el: '#app'
@@ -53,10 +54,12 @@ $(document).ready( function(){
 	$('#finished').click( function(){
 
 		if( $(this).is(':checked') ){
-			console.log('checked');
+			$('#finish_date_label').attr('hidden',false);
+			$('#finish_date_field').attr('hidden',false);
 		}
 		else{
-			console.log('not checked');
+			$('#finish_date_label').attr('hidden',true);
+			$('#finish_date_field').attr('hidden',true);
 		}
 	} );
 

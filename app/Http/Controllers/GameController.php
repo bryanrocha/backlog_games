@@ -84,9 +84,10 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show()
     {
         //
+        return view('games.show');
     }
 
     /**
@@ -158,4 +159,5 @@ class GameController extends Controller
     {
         //
     }
+
 }

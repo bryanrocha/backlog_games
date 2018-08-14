@@ -27,7 +27,9 @@
 
 		<div class="form-group">
 			{{Form::label('','Finished?')}}
-			{{Form::checkbox('finished','yes', false,['class' => 'form-control', 'id' => 'finished'])}}			
+			{{Form::checkbox('finished','yes', false,['class' => 'form-control', 'id' => 'finished'])}}
+			{{Form::label('finish_date_label', 'Finish date', ['id' => 'finish_date_label', 'hidden' => 'true'])}}
+			{{Form::date('finish_date', '', ['class' => 'form-control', 'id' => 'finish_date_field', 'hidden' => 'true'])}}
 		</div>
 
 		<div class="form-group">

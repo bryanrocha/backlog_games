@@ -13891,7 +13891,8 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(39));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('game-show', __webpack_require__(39));
 
 var app = new Vue({
 	el: '#app'
@@ -13924,9 +13925,11 @@ $(document).ready(function () {
 	$('#finished').click(function () {
 
 		if ($(this).is(':checked')) {
-			console.log('checked');
+			$('#finish_date_label').attr('hidden', false);
+			$('#finish_date_field').attr('hidden', false);
 		} else {
-			console.log('not checked');
+			$('#finish_date_label').attr('hidden', true);
+			$('#finish_date_field').attr('hidden', true);
 		}
 	});
 });
@@ -47224,7 +47227,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+Component.options.__file = "resources/assets/js/components/Game.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47233,9 +47236,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+    hotAPI.createRecord("data-v-fff8b8ae", Component.options)
   } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
+    hotAPI.reload("data-v-fff8b8ae", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47376,10 +47379,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+
+    methods: {
+        index_array: function index_array() {
+            console.log('lala');
+            window.axios.get('/api/backlog/1').then(function (_ref) {
+                var data = _ref.data;
+
+                console.log(data);
+            });
+            window.axios.get('/api/user').then(function (response) {
+                console.log(response.data);
+            });
+        }
     }
 });
 
@@ -47391,26 +47412,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: {
+            click: function($event) {
+              _vm.index_array()
+            }
+          }
+        },
+        [_vm._v("Index")]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+    return _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm._v(
+              "\n                    I'm an example component.\n                "
+            )
           ])
         ])
       ])
@@ -47422,7 +47458,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-fff8b8ae", module.exports)
   }
 }
 

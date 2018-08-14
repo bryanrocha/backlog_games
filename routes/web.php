@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('games', 'GameController');
+Route::resource('games', 'GameController', ['except' => ['destroy','indexArray']]);
 
-Route::resource('companies', 'CompanyController');
+Route::resource('companies', 'CompanyController', ['except' => ['index','show','edit','update','destroy']]);
 
-Route::resource('consoles', 'ConsoleController');
+Route::resource('consoles', 'ConsoleController', ['except' => ['index','show','edit','update','destroy']]);
 
-Route::resource('backlogs', 'BacklogController');
+Route::resource('backlogs', 'BacklogController', ['except' => ['show','edit','update','destroy']]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
